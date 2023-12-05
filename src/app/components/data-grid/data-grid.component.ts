@@ -1,10 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AutobahnService } from '../../services/autobahn.service';
 
 @Component({
   selector: 'app-data-grid',
   templateUrl: './data-grid.component.html',
   styleUrls: ['./data-grid.component.css']
 })
-export class DataGridComponent {
+export class DataGridComponent implements OnInit {
+  roadworks: any[] = [];
 
+  constructor(private autobahnService: AutobahnService) { }
+
+  ngOnInit() {
+    this.autobahnService.getRoadworks().subscribe({
+      next: (data: any) => {
+        this.roadworks = data;
+      },
+      error: (error) => {
+        console.error('Data recovery error', error);
+      }
+    });
+  }
 }
