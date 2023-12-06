@@ -1,3 +1,17 @@
-<div>
-    <p>Grille de données à venir...</p>
+<div class="data-grid-container">
+  <table mat-table [dataSource]="roadworks" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Titre </th>
+      <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 </div>

@@ -8,6 +8,7 @@ import { AutobahnService } from '../../services/autobahn.service';
 })
 export class DataGridComponent implements OnInit {
   roadworks: any[] = [];
+  displayedColumns: string[] = ['title', 'description'];
 
   constructor(private autobahnService: AutobahnService) { }
 
@@ -17,7 +18,7 @@ export class DataGridComponent implements OnInit {
         this.roadworks = data;
       },
       error: (error) => {
-        console.error('Data recovery error', error);
+        console.error('Erreur lors de la récupération des données', error);
       }
     });
   }
